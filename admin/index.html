@@ -26,10 +26,14 @@ textarea,input,select{font:inherit;color:inherit}
 .num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
 
 header{background:var(--surface);border-bottom:1px solid var(--line);padding:18px 26px;
-  display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10}
+  display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;
+  /* Without the wrap the row overflows on a narrow window and the domain is
+     pushed off the inline edge, taking a horizontal scrollbar with it. */
+  flex-wrap:wrap}
 header h1{font-size:19px;margin:0;font-weight:700;letter-spacing:-.01em}
 header .tag{font-size:11.5px;font-weight:700;background:var(--amber-tint);color:var(--amber);
-  padding:5px 11px;border-radius:999px}
+  padding:5px 11px;border-radius:999px;white-space:nowrap}
+header .meta{white-space:nowrap}
 .wrap{display:grid;grid-template-columns:290px 1fr;gap:22px;padding:22px 26px;
   max-width:1400px;margin:0 auto;align-items:start}
 @media (max-width:900px){.wrap{grid-template-columns:1fr}}
@@ -96,7 +100,7 @@ dialog::backdrop{background:rgba(10,14,13,.5)}
 <header>
   <h1>لوحة إدارة المستندات</h1>
   <span class="tag">مسودة، غير مربوطة بخادم</span>
-  <span style="flex:1"></span>
+  <span style="flex:1 1 0;min-width:0"></span>
   <span class="meta">lelbe3.com</span>
 </header>
 
